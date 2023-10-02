@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carina.Chat | Carina IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      * {
+        box-sizing: content-box;
+      }
+    </style>
+  </head>
+  <body
+    class="flex items-center justify-center h-screen text-white bg-gray-100 colorful-bg box-border"
+    id="body"
+  >
+    <div class="text-center flex items-center h-full w-full justify-center">
+      <div
+        class="bg-gray-900 p-8 rounded-2xl w-[500px] flex flex-col sm:h-[85%] my-auto justify-between border-8 border-white drop-shadow-2xl"
+      >
+        <div>
+          <div class="flex items-center">
+            <img
+              class="animate-tjs rounded-full w-16 h-16 mb-2 border-4 border-green-500"
+              src="/carina-avatar.jpg"
+            />
+            <h1 class="text-5xl mb-2 ml-4"><b>Carina IA</b> <br /></h1>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-start space-x-2 relative flex-col">
+            <div
+              class="p-4 rounded-xl bg-blue-500 text-white font-bold text-xl"
+            >
+              <p id="chat-bubble-text" class="text-xl text-left"></p>
+            </div>
+          </div>
+          <div class="pt-8 w-full flex">
+            <div
+              class="text-left text-lg bg-gray-500 p-4 rounded-lg mb-2 w-full mr-4"
+            >
+              Hola Carina! 👋
+            </div>
+            <a
+              href="https://wa.me/message/JG2HRZAX6Q7KL1"
+              class="flex items-center justify-center bg-green-500 p-2 rounded-full mb-2 font-bold w-[70px]"
+            >
+              <img
+                class="mx-auto filter invert w-[32px] ml-[8px]"
+                src="/send.png"
+                alt="Send"
+              />
+            </a>
+          </div>
+          <div>
+            <p class="text-left text-sm pt-2">
+              <a href="/terminos-y-condiciones" class="underline"
+                >Términos y Condiciones</a
+              >
+            </p>
+            <p class="text-left text-sm pt-2">
+              <a href="/politica-de-privacidad" class="underline"
+                >Política de Privacidad</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let hue = 180,
+        direction = 1;
+
+      const img = document.querySelector(".animate-tjs");
+
+      // Three js
+      const scaleFactor = 1;
+      const maxScale = 1.5;
+      const scaleSpeed = 0.01;
+
+      document.addEventListener("mousemove", function (e) {
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        img.style.transform =
+          "perspective(500px) rotateY(" +
+          (x * 40 - 20) +
+          "deg) rotateX(" +
+          -(y * 20 - 10) +
+          "deg) ";
+      });
+
+      img.addEventListener("mouseenter", function (e) {
+        scaleFactor = maxScale;
+      });
+
+      img.addEventListener("mouseleave", function (e) {
+        scaleFactor = 1;
+      });
+
+      // Typewriter
+
+      const text = `¡Hola! 👋 Soy Carina, tu asistente virtual en WhatsApp.
+
+Conmigo encontraras...
+
+✨ Respuestas precisas
+🔍 Búsquedas en Internet
+☀️ Pronósticos del clima
+🎧 Transcripción de audios
+✨ TODO lo que necesites!
+
+Mi objetivo es hacer tu rutina más fácil y eficiente desde WhatsApp 🤩
+
+En qué puedo ayudarte hoy? 😊
+`; // The text to be typed
+      const elem = document.getElementById("chat-bubble-text"); // The element to type in
+      const speed = 30; // Speed of typing in milliseconds
+      let i = 0;
+
+      function typeWriter() {
+        if (i < text.length) {
+          if (text.charAt(i) === "\n") {
+            elem.innerHTML += "</br>";
+          }
+          elem.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      typeWriter(); // Call the function
+    </script>
+  </body>
+</html>
